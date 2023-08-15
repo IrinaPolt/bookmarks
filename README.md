@@ -24,6 +24,25 @@ git clone git@github.com:IrinaPolt/bookmarks.git
 cd bookmarks/infra/
 docker-compose up --build
 ```
+
+Migrations are performed automatically, while creating a superuser needs to be done manually.
+
+```
+docker exec -it <the container ID> python manage.py createsuperuser
+
+```
+To find out the container ID:
+
+```
+docker ps
+```
+
 ### Endpoints
 
-...
+- **URL:** `/api/` - drf root. The detailed API schema will be accessible via the Swagger endpoint.
+- **URL:** `/swagger/`
+- **URL:** `/admin/` - django admin endpoint
+
+### Postman testing
+
+![Example](https://github.com/IrinaPolt/bookmarks/blob/main/infra/image.png)

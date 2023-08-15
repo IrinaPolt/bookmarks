@@ -4,7 +4,11 @@ from django.db import models
 
 class User(AbstractUser):
     email = models.EmailField(max_length=254, unique=True)
-    username = models.CharField(max_length=150, unique=True, blank=True, null=True)
+    username = models.CharField(
+        max_length=150,
+        unique=True,
+        blank=True,
+        null=True)
     first_name = models.CharField(max_length=150, blank=True)
     last_name = models.CharField(max_length=150, blank=True)
     password = models.CharField(max_length=150)

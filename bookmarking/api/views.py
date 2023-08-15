@@ -14,13 +14,13 @@ from .serializers import (
 
 class BookmarkViewSet(viewsets.ModelViewSet):
     queryset = Bookmark.objects.all()
-    
+
     def get_serializer_class(self):
         if self.request.method == 'POST':
             return BookmarkCreateSerializer
         else:
             return BookmarkSerializer
-    
+
     def perform_create(self, serializer):
         link = serializer.validated_data.get('url')
         page = requests.get(link)
@@ -31,7 +31,7 @@ class BookmarkViewSet(viewsets.ModelViewSet):
 
         for field in fields:
             check = soup.find('meta', {'property': f'og:{field}'})
-            if check != None:
+            if check is not None:
                 data[field] = check.get('content', '')
             else:
                 continue

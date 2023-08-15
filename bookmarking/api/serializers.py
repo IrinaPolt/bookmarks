@@ -4,7 +4,6 @@ from storage.models import Bookmark, BMCollection
 from users.models import User
 
 
-
 class BookmarkSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -17,7 +16,7 @@ class BookmarkCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bookmark
         fields = ('url', )
-        
+
 
 class CollectionSerializer(serializers.ModelSerializer):
 

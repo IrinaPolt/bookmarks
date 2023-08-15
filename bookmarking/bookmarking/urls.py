@@ -1,22 +1,24 @@
-from django.conf import settings
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include, re_path
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
 
+
 schema_view = get_schema_view(
     openapi.Info(
-        title="Your API",
+        title="Bookmarks API",
         default_version='v1',
         description="API description",
-        terms_of_service="https://www.yourapp.com/terms/",
-        contact=openapi.Contact(email="contact@yourapp.com"),
-        license=openapi.License(name="Your License"),
+        terms_of_service="https://www.example.com/terms/",
+        contact=openapi.Contact(email="contact@example.com"),
+        license=openapi.License(name="MIT"),
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,3 +30,5 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui(
          'redoc', cache_timeout=0), name='schema-redoc'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
